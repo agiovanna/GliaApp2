@@ -1,6 +1,5 @@
-export declare global {
-    namespace ReactNavigation {
-        interface RootParamList {
+export type RootParamList = {
+
             SignUpProfessional1: undefined;
 
             SignUpProfessional2: undefined;
@@ -55,6 +54,10 @@ export declare global {
 
             MapClient: undefined;
 
+            Catalog: undefined;
+
+            AddProfileProfessional: undefined;
+
+            AddItem: object;
+
         }
-    }
-}

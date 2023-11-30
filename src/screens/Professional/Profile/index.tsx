@@ -1,11 +1,21 @@
-import { View, Text } from 'react-native';
+import { StyleSheet, View } from "react-native";
+
+import HeaderProfessional from "./ProfileHeader";
+import TopBarNavigator from "./Navigators/BarNavigator";
+
 
 export function ProfileProfessional() {
     return (
-        <View style={{ flex: 1, alignItems: "center", justifyContent: "center", width: "100%" }}>
-            <Text>
-                Perfil de Profissional
-            </Text>
+        <View style={styles.container}>
+            <HeaderProfessional />
+            <TopBarNavigator/>
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        width: "100%",
+    },
+});

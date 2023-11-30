@@ -16,6 +16,8 @@ import { MapClient } from '../utils/MapClient';
 import { MapProfessional } from '../utils/MapProfessional';
 import { SignIn } from '../screens/SignIn';
 import { ChatProfessional } from '../screens/Professional/Chat';
+import { ProfileProfessional } from '../screens/Professional/Profile';
+import AddItem from '../screens/Professional/Profile/AddItem';
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
@@ -23,12 +25,12 @@ export function Routes() {
     return (
         <Navigator screenOptions={{ headerShown: false }}>
 
-            <Screen
+            {/* <Screen
                 name='SignIn'
                 component={SignIn}
-            />
+            /> */}
 
-            <Screen
+            {/* <Screen
                 name='HomeClient'
                 component={HomeClient}
             />
@@ -46,9 +48,9 @@ export function Routes() {
             <Screen
                 name='MenuClient'
                 component={MenuClient}
-            />
+            /> */}
 
-            <Screen
+            {/* <Screen
                 name='SignUpClient1'
                 component={SignUpClient1}
             />
@@ -61,9 +63,9 @@ export function Routes() {
             <Screen
                 name='SignUpClient3'
                 component={SignUpClient3}
-            />
+            /> */}
 
-            <Screen
+            {/* <Screen
                 name='SignUpProfessional1'
                 component={SignUpProfessional1}
             />
@@ -86,14 +88,14 @@ export function Routes() {
             <Screen
                 name='SignUpProfessional5'
                 component={SignUpProfessional5}
-            />
+            /> */}
 
-            <Screen
+            {/* <Screen
                 name='MapClient'
                 component={MapClient}
-            />
+            /> */}
 
-            <Screen
+            {/* <Screen
                 name='MapProfessional'
                 component={MapProfessional}
             />
@@ -101,7 +103,17 @@ export function Routes() {
             <Screen
                 name='ChatProfessional'
                 component={ChatProfessional}
+            /> */}
+
+            <Screen
+                name='ProfileProfessional'
+                component={ProfileProfessional}
             />
+
+           <Screen
+                name='AddItem'
+                component={AddItem}
+            /> 
 
         </Navigator>
     );
