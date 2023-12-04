@@ -133,15 +133,15 @@ function AddProfileProfessional() {
                 <Text >Entrar</Text>
             </TouchableOpacity>
 
-
+{/* 
             <BottomSheet
                 ref={bottomSheetRef}
                 index={0}
                 snapPoints={[1, height - 750]}
-            >
+            > */}
                 <View >
                     <View style={{ width: "auto", height: "auto", flexDirection: "row", gap: 50, }}>
-                        <TouchableOpacity onPress={AcessCamera}>
+                        <TouchableOpacity onPress={AcessCamera} >
                             <Ionicons name="camera" size={38} color="black" />
                         </TouchableOpacity>
 
@@ -151,7 +151,7 @@ function AddProfileProfessional() {
                     </View>
                 </View>
 
-            </BottomSheet>
+            {/* </BottomSheet> */}
 
         </View>
     );

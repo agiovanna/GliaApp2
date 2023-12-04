@@ -58,6 +58,9 @@ export type RootParamList = {
 
             AddProfileProfessional: undefined;
 
+            AddProfileClient: undefined;
+
             AddItem: object;
 
+            AddHeader: object;
         }
