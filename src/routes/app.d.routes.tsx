@@ -16,6 +16,9 @@ import { MapClient } from '../utils/MapClient';
 import { MapProfessional } from '../utils/MapProfessional';
 import { SignIn } from '../screens/SignIn';
 import { ChatProfessional } from '../screens/Professional/Chat';
+import { ProfileProfessional } from '../screens/Professional/Profile';
+import AddItem from '../screens/Professional/Profile/AddItem';
+import AddHeader from '../screens/Professional/SignUp/SignUpSixthStep';
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
@@ -23,30 +26,30 @@ export function Routes() {
     return (
         <Navigator screenOptions={{ headerShown: false }}>
 
-            <Screen
+            {/* <Screen
                 name='SignIn'
                 component={SignIn}
-            />
+            /> */}
 
-            <Screen
+            {/* <Screen
                 name='HomeClient'
                 component={HomeClient}
-            />
+            /> */}
 
-            <Screen
+            {/* <Screen
                 name='HomeProfessional'
                 component={HomeProfessional}
-            />
+            /> */}
 
             <Screen
                 name='MenuProfessional'
                 component={MenuProfessional}
             />
 
-            <Screen
+            {/* <Screen
                 name='MenuClient'
                 component={MenuClient}
-            />
+            /> */}
 
             <Screen
                 name='SignUpClient1'
@@ -101,6 +104,21 @@ export function Routes() {
             <Screen
                 name='ChatProfessional'
                 component={ChatProfessional}
+            />
+
+            <Screen
+                name='AddHeader'
+                component={AddHeader}
+            />
+
+            <Screen
+                name='ProfileProfessional'
+                component={ProfileProfessional}
+            />
+
+            <Screen
+                name='AddItem'
+                component={AddItem}
             />
 
         </Navigator>
