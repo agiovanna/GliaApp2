@@ -19,6 +19,8 @@ import { ChatProfessional } from '../screens/Professional/Chat';
 import { ProfileProfessional } from '../screens/Professional/Profile';
 import AddItem from '../screens/Professional/Profile/AddItem';
 import AddHeader from '../screens/Professional/SignUp/SignUpSixthStep';
+import { MapService } from '../utils/MapService';
+import { dadosSolicitacao } from '../utils/@test/solicitacao';
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
@@ -119,6 +121,16 @@ export function Routes() {
             <Screen
                 name='AddItem'
                 component={AddItem}
+            />
+
+            <Screen
+                name='dadosSolicitacao'
+                component={dadosSolicitacao}
+            />
+
+            <Screen
+                name='MapService'
+                component={MapService}
             />
 
         </Navigator>

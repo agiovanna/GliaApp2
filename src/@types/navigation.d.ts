@@ -63,4 +63,9 @@ export type RootParamList = {
             AddItem: object;
 
             AddHeader: object;
+
+            MapService: object;
+
+            dadosSolicitacao: undefined;
+        
         }
