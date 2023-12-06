@@ -1,5 +1,5 @@
-import React from "react-native";
-import { Screen, Container, Content, SubTitle, Title } from './style';
+import React, {Platform, KeyboardAvoidingView, ScrollView} from "react-native";
+import { Screen, Container, SubTitle, Title, Content} from './style';
 import { RegisterFirebaseandSendEmail } from "../../../../utils/emailValidation/sendValidation";
 import { useState } from "react";
 import firebaseAuth from "../../../../api/firebase/firebaseConfig";
@@ -48,10 +48,14 @@ export function SignUpClient2({ navigation, route }: { navigation: any, route: a
     }
 
     return (
+        <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={{ flex: 1 }}>
+        <Content>
+        <ScrollView
+            contentContainerStyle={{ flexGrow: 1 }}
+            keyboardShouldPersistTaps="handled"
+        >
         <Screen>
-            <Content>
                 <Header title="Senha" />
-
                 <Container>
                     <Title> Por favor, digite um email válido e crie uma senha forte:</ Title>
                     <SubTitle> A senha deve conter pelo menos 8 dígitos, um número e letra  </SubTitle>
@@ -63,7 +67,9 @@ export function SignUpClient2({ navigation, route }: { navigation: any, route: a
 
                     <Button type="terciary" title="Finalizar" onPress={RegisterandSendEmail} />
                 </Container>
-            </Content>
         </Screen>
+        </ScrollView>
+        </Content>
+        </KeyboardAvoidingView>
     );
 }

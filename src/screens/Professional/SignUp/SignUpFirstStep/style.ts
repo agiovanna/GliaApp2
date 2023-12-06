@@ -1,8 +1,6 @@
 import styled, { css } from "styled-components/native";
 import theme from "../../../../theme";
 
-import { getBottomSpace } from "react-native-iphone-x-helper";
-
 export const Form = styled.View`
   background-color: white;
   height: 100%;
@@ -12,14 +10,6 @@ export const Form = styled.View`
   border-top-right-radius: 32px;
 `;
 
-export const Content = styled.ScrollView.attrs({
-    showsVerticalScrollIndicator: false,
-    contentContainerStyle: {
-        paddingBottom: getBottomSpace() + 48,
-    },
-})`
-  width: 100%;
-`;
 
 export const Title = styled.Text`
   font-size: 32px;
@@ -35,9 +25,9 @@ export const Title = styled.Text`
 export const Logo = styled.Image.attrs({
     resizeMode: "contain",
 })`
-  height: 100px;
-  margin-top: 35px;
-  margin-bottom: 35px;
+  height: 130px;
+  margin-top: 60px;
+  margin-bottom: 45px;
 `;
 
 export const Container = styled.View`
@@ -74,3 +64,7 @@ export const LoginLabel = styled.Text`
     color: ${theme.COLORS.DARKBLUE};
   `};
 `;
+
+export const Screen = styled.View`
+  flex: 1;
+`

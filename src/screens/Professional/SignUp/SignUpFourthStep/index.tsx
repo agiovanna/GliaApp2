@@ -1,12 +1,13 @@
-import React from "react-native";
 import { Screen, Container, Content, SubTitle, Title } from './style';
 import { RegisterFirebaseandSendEmail } from "../../../../utils/emailValidation/sendValidation"; 
 import { useState } from "react";
 import firebaseAuth from "../../../../api/firebase/firebaseConfig";
+import { KeyboardAvoidingView, Platform, ScrollView, Alert } from 'react-native';
 
 import { Button } from "../../../../components/Button";
 import { Input } from "../../../../components/Input";
 import { Header } from "../../../../components/Header";
+
 
 export function SignUpProfessional4({ navigation, route }: { navigation: any, route: any }) {
     const [email, setEmail] = useState('');
@@ -34,6 +35,10 @@ export function SignUpProfessional4({ navigation, route }: { navigation: any, ro
     } = route.params;
 
     async function RegisterandSendEmail() {
+        if (!state || !city || !cep || !neighborhood || !street || !numberHome) {
+            Alert.alert("Erro", "Por favor, preencha todos os campos.");
+            return;
+        } else {
         try {
 
             RegisterFirebaseandSendEmail(email, password);
@@ -62,13 +67,18 @@ export function SignUpProfessional4({ navigation, route }: { navigation: any, ro
         }
         catch (erro) {
             console.log('erro: ' + erro);
-        }
+        }}
 
     }
 
     return (
+        <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={{ flex: 1 }}>
+        <Content>
+        <ScrollView
+            contentContainerStyle={{ flexGrow: 1 }}
+            keyboardShouldPersistTaps="handled"
+        >
         <Screen>
-            <Content>
                 <Header title="Senha" />
 
                 <Container>
@@ -82,7 +92,9 @@ export function SignUpProfessional4({ navigation, route }: { navigation: any, ro
 
                     <Button type="terciary" title="Finalizar" onPress={RegisterandSendEmail} />
                 </Container>
-            </Content>
         </Screen>
+        </ScrollView>
+        </Content>
+        </KeyboardAvoidingView>
     );
 }

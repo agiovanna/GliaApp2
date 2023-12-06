@@ -5,9 +5,9 @@ import { Input } from "../../../../components/Input";
 import { CheckBoxComponent } from "../../../../components/Checkbox";
 import { useState } from "react";
 
-import { Screen, Container } from "./style";
+import { Screen, Container, Content } from "./style";
 
-import { KeyboardAvoidingView, Platform } from "react-native";
+import { KeyboardAvoidingView, Platform, ScrollView } from "react-native";
 
 export function SignUpProfessional3({
     navigation,
@@ -18,6 +18,8 @@ export function SignUpProfessional3({
 }) {
     const [cnpj, setCnpj] = useState("");
     const [fantasyName, setFantasyName] = useState("");
+    
+
 
     const {
         name,
@@ -52,10 +54,13 @@ export function SignUpProfessional3({
     }
 
     return (
+        <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={{ flex: 1 }}>
+        <Content>
+        <ScrollView
+            contentContainerStyle={{ flexGrow: 1 }}
+            keyboardShouldPersistTaps="handled"
+        >
         <Screen>
-            <KeyboardAvoidingView
-                behavior={Platform.OS === "ios" ? "padding" : undefined}
-            />
             <Header title="Seu negócio" />
 
             <Container>
@@ -72,10 +77,14 @@ export function SignUpProfessional3({
                     type="primary"
                     onChangeText={setFantasyName}
                     value={fantasyName}
+                    editable
                 />
-                <CheckBoxComponent title="Não possuo um negócio/empresa" />
+                <CheckBoxComponent title="Não possuo um negócio/empresa"  />
                 <Button title="Continuar" type="terciary" onPress={DataBusiness} />
             </Container>
         </Screen>
+        </ScrollView>
+        </Content>
+        </KeyboardAvoidingView>
     );
 }

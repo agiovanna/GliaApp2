@@ -1,4 +1,4 @@
-import React from "react-native";
+import React, {Platform, KeyboardAvoidingView, ScrollView} from "react-native";
 import { Screen, Container, Content, SubTitle, Title } from './style';
 import { createUserClient } from "../../../../api/createUsers/createClient";
 import verificationEmail from "../../../../utils/emailValidation/verifyValidation";
@@ -57,8 +57,14 @@ export function SignUpClient3({ navigation, route }: { navigation: any, route: a
     }
 
     return (
+        <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={{ flex: 1 }}>
+        <Content>
+        <ScrollView
+            contentContainerStyle={{ flexGrow: 1 }}
+            keyboardShouldPersistTaps="handled"
+        >
         <Screen>
-            <Content>
+            
                 <Header title="Senha" />
 
                 <Container>
@@ -67,7 +73,9 @@ export function SignUpClient3({ navigation, route }: { navigation: any, route: a
 
                     <Button type="terciary" title="Verificar" onPress={Verification} />
                 </Container>
-            </Content>
         </Screen>
+        </ScrollView>
+        </Content>
+        </KeyboardAvoidingView>
     );
 }
