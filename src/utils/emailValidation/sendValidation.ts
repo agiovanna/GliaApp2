@@ -20,5 +20,15 @@ import { Alert } from "react-native";
         }
         catch (error) {
             console.error('Erro ao criar o usuário no Firebase:', error);
+
+            if ('auth/email-already-exists') {
+                Alert.alert('Erro', 'E-mail já cadastrado.');
+            }
+            if ('auth/invalid-email') {
+                Alert.alert('Erro', 'E-mail inválido.');
+            }
+            if (error == 'auth/invalid-password' || error == 'auth/missing-password') {
+                Alert.alert('Erro', 'Senha inválida. É necessário no mínimo 6 caracteres.');
+            }
         }
     }
