@@ -12,6 +12,8 @@ import { ChatClient } from "../Chat";
 
 import { useTheme } from "styled-components";
 
+import {View} from 'react-native';
+
 const Bottom = createBottomTabNavigator();
 
 
@@ -20,7 +22,7 @@ export function MenuClient() {
     const { COLORS } = useTheme();
 
     return (
-
+        <View>
         <Bottom.Navigator screenOptions={{
             headerShown: false, tabBarShowLabel: false, tabBarInactiveTintColor: COLORS.PINK, tabBarStyle: {
                 backgroundColor: COLORS.VIOLET,
@@ -69,5 +71,6 @@ export function MenuClient() {
             />
 
         </Bottom.Navigator>
+        </View>
     );
 }
