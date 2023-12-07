@@ -111,7 +111,7 @@ export function Catalog() {
 
             {/* new catalog */}
             <AddCatalog>
-                <TouchableOpacity onPress={() => setModalVisible(true)}>
+                <TouchableOpacity onPress={() => setModalVisible(false)}>
                     <Ionicons name="add-circle-sharp" size={60} color="gray" />
                 </TouchableOpacity>
             </AddCatalog>

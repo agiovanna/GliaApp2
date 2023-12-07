@@ -3,6 +3,7 @@ import { Text, View } from 'react-native';
 import {Catalog} from '../ProfileCatalog';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { InfoScreen } from '../ProfileInfo';
+import theme from '../../../../theme';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -34,7 +35,13 @@ function Tabs() {
         <Tab.Navigator
             initialRouteName='Catálogo'
             screenOptions={{
-                tabBarActiveTintColor: "#d89"
+                tabBarActiveTintColor: "#662549",
+                tabBarStyle: {
+                    backgroundColor: '#E8BCB9' // Cor de fundo da barra de navegação
+                },
+                tabBarIndicatorStyle: {
+                    backgroundColor: '#662549' // Cor do indicador
+                }
             }}
         >
             <Tab.Screen

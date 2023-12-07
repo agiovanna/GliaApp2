@@ -1,11 +1,12 @@
-import { StyleSheet, View, Image, Text } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import React, { useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Container, Screen, Image, InfoContainer, ProfessionalName, InfoA, TitleA } from './styles';
 
 
 export default function HeaderProfessional() {
-  const [profileImage, setProfileImage] = useState<string | null>(null);
+  {/*const [profileImage, setProfileImage] = useState<string | null>(null);
 
     // Use o useEffect para carregar a imagem do AsyncStorage quando a tela for montada
     useEffect(() => {
@@ -19,25 +20,29 @@ export default function HeaderProfessional() {
       };
 
       loadProfileImage();
-    }, []);
+    }, []);*/}
 
     return (
-      <View>
-        <View >
+    <Screen>
+        <Container >
   
-          {profileImage ? ( 
+          {/*{profileImage ? ( 
           <Image source={{ uri: profileImage }} />
           ) : (
             <Image source={require('../../../../../assets/profile.png')}  />
-            )}
+          )}*/}
+
+          <Image source={require('../../../../../assets/profile.png')} alt='Foto de perfil'/>
   
-          <Text>Nome </Text>
-          <View >
+  <InfoContainer>
+         <ProfessionalName> Fulana da Silva </ProfessionalName>
+          <InfoA>
             <AntDesign name="star" size={22} color="white" />
-            <Text style={{ fontSize: 20, marginLeft: 8, color:'white' }}>Avaliação</Text>
-          </View>
-        </View>
-      </View>
+            <TitleA>Avaliação</TitleA>
+            </InfoA>
+            </InfoContainer>
+            </Container>
+        </Screen>
     );
   }
   

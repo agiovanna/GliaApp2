@@ -54,10 +54,7 @@ text-align: center;
 
 export const ItemShadow = styled.View`
 width: 30%;
-padding-top: 16px;
-    padding-bottom: 16px;
-    padding-left: 16px;
-    padding-right: 16px;
+padding: 16px;
     align-items: center;
     border-radius: 10px;
     `;
@@ -82,8 +79,9 @@ font-size: 20px;
   margin-top: 20px;`;
 
 export const CenteredView = styled.View`
-justifyContent: 'center',
-alignItems: 'center', `;
+justify-content: center;
+align-items: center `;
+
 
 export const ModalView = styled.View
 // .attrs(({ theme}) => ({

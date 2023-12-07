@@ -1,10 +1,14 @@
-import { StyleSheet, View, Text, TouchableOpacity, Modal, Pressable } from 'react-native';
+import { View, Text, TouchableOpacity, Modal, Pressable } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import { readInfo } from '../../../../api/readUsers/readInfoProfessional';
 import { updateDescProfessional } from '../../../../api/updateUsers/updateDescProfessional';
 import { AntDesign } from '@expo/vector-icons';
 import { TextInput } from 'react-native-gesture-handler';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { Screen, Container, Title  } from './style';
+
+import { Button } from '../../../../components/Button';
+import { Input } from '../../../../components/Input';
 
 
 
@@ -20,6 +24,7 @@ export function InfoScreen() {
     const [desc, setDesc] = useState('');
     const [modalVisible, setModalVisible] = useState(false);
     const [infoRefreshing, setInfoRefreshing] = useState(false);
+    
 
     //updating
     const refreshInfo = async () => {
@@ -70,18 +75,25 @@ export function InfoScreen() {
     return (
         <GestureHandlerRootView style={{ flex: 1 }}>
 
-            <View>
+            <Screen>
+                
 
                 <View>
-                    {infos && infos.length > 0 ? (
-                        <View>
+                    
+                    {/*{infos && infos.length > 0 ? (*/}
+                        <Container>
                             <Text>Sobre Mim:</Text>
-                            <Text>{infos[0].tb_profissional_desc}</Text>
-                            <Text>CNPJ: {infos[0].tb_profissional_cnpj}</Text>
-                        </View>
-                    ) : (
+                        </Container>
+                        <Container>
+                            <Text> Descrição:{/*{infos[0].tb_profissional_desc}*/}</Text>
+                         </Container>
+                         <Container>
+                            <Text>CNPJ: {/*}{infos[0].tb_profissional_cnpj}*/}</Text>
+                        </Container>
+                        
+                    {/*}) : (*/}
                         <Text>Nenhuma informação disponível.</Text>
-                    )}
+                   {/*} )}*/}
                 </View>
 
                 {/* new item */}
@@ -91,31 +103,31 @@ export function InfoScreen() {
                     <AntDesign name="edit" size={24} color="black" />
 
                 </TouchableOpacity>
+                
+                
 
                 <Modal
                     animationType="slide"
-                    transparent={true}
+                    transparent={false}
                     visible={modalVisible}>
                     <View >
-                        <View >
-                            <Text >Editar Descrição:</Text>
-                            <TextInput placeholder='Insira a descrição' onChangeText={setDesc} value={desc} />
-                            <Pressable
-                                onPress={async () => {
-                                    await updateInfo();
-                                    setModalVisible(!modalVisible);
-                                }}>
-                                <Text >ADICIONAR</Text>
-                            </Pressable>
-                            <Pressable
-                                onPress={async () => setModalVisible(!modalVisible)}>
-                                <Text >CANCELAR</Text>
-                            </Pressable>
+                        <View style={{ alignItems: "center" }}>
+                            <Title>Editar descrição</Title>
+                            <Input
+                                name='Descrição'
+                                placeholder="Insira a descrição"
+                                type="primary"
+                                onChangeText={setDesc}
+                                value={desc}
+                            />
+                            <Button type="secondary" title="adicionar" onPress={async () => {await updateInfo(); setModalVisible(!modalVisible);}} />
+
+                            <Button type="secondary" title="Cancelar" onPress={async () => setModalVisible(!modalVisible)} />
                         </View>
                     </View>
                 </Modal>
 
-            </View>
+            </Screen>
         </GestureHandlerRootView>
 
     );
