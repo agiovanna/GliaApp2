@@ -9,10 +9,10 @@ import { useRoute } from '@react-navigation/native';
 import * as geolib from 'geolib';
 
 type itemScreenParams = {
-    clientLocation: { latitudeClient: number; longitudeClient: number };
+    clientLocation: { clienteLat: number; clienteLot: number };
     clientName: string;
     itemName: string;
-    itemPrice: number;
+    itemCost: number;
     image: string;
 };
 
@@ -23,7 +23,7 @@ export function MapServiceProfessional() {
     const [distance, setDistance] = useState<number | null>(null); //distancia da profissional até a clienteu
 
     const route = useRoute();
-    const { clientLocation, clientName, itemName, itemPrice, image } = route.params as itemScreenParams; //localização da cliente
+    const { clientLocation, clientName, itemName, itemCost, image } = route.params as itemScreenParams; //localização da cliente
 
     //permissão de acesso á localização do dispositivo
     async function requestLocationPermission() {
@@ -68,8 +68,8 @@ export function MapServiceProfessional() {
                 if (location && clientLocation) {
 
                     const clientCoordinates = {
-                        latitude: clientLocation.latitudeClient,
-                        longitude: clientLocation.longitudeClient
+                        latitude: clientLocation.clienteLat,
+                        longitude: clientLocation.clienteLot
                     };
 
                     const dist = geolib.getDistance(response.coords, clientCoordinates, 1); // Distância em metros
@@ -116,8 +116,8 @@ export function MapServiceProfessional() {
                     {clientLocation && (
                         <Marker
                             coordinate={{
-                                latitude: clientLocation.latitudeClient,
-                                longitude: clientLocation.longitudeClient
+                                latitude: clientLocation.clienteLat,
+                                longitude: clientLocation.clienteLot
                             }}
                             pinColor='purple'
                         />
@@ -126,7 +126,7 @@ export function MapServiceProfessional() {
                     <Polyline
                         coordinates={[
                             { latitude: location.coords.latitude, longitude: location.coords.longitude },
-                            { latitude: clientLocation.latitudeClient, longitude: clientLocation.longitudeClient },
+                            { latitude: clientLocation.clienteLat, longitude: clientLocation.clienteLot },
                         ]}
                         strokeColor="#000000"
                         strokeWidth={2}
@@ -141,7 +141,7 @@ export function MapServiceProfessional() {
                 <Image style={styles.img} source={{ uri: image }} />
                 <Text>{clientName}</Text>
                 <Text>{itemName}</Text>
-                <Text>R${itemPrice},00</Text>
+                <Text>R${itemCost},00</Text>
 
                 <TouchableOpacity onPress={Chat}>
                     <Ionicons name="ios-chatbubble-ellipses-outline" size={28} color="black" />

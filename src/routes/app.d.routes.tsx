@@ -19,6 +19,8 @@ import { ChatProfessional } from '../screens/Professional/Chat';
 import { ProfileProfessional } from '../screens/Professional/Profile';
 import AddItem from '../screens/Professional/Profile/AddItem';
 import AddHeader from '../screens/Professional/SignUp/SignUpSixthStep';
+import RatingService from '../screens/Client/ClientVisionService/RatingService';
+import RatingClient from '../screens/Professional/ProfessionalVisionService/RatingClient';
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
@@ -41,17 +43,17 @@ export function Routes() {
                 component={HomeProfessional}
             /> */}
 
-            <Screen
+            {/* <Screen
                 name='MenuProfessional'
                 component={MenuProfessional}
-            />
+            /> */}
 
             {/* <Screen
                 name='MenuClient'
                 component={MenuClient}
             /> */}
 
-            <Screen
+            {/* <Screen
                 name='SignUpClient1'
                 component={SignUpClient1}
             />
@@ -119,6 +121,17 @@ export function Routes() {
             <Screen
                 name='AddItem'
                 component={AddItem}
+            /> */}
+
+            {/* <Screen
+                name='RatingClient'
+                component={RatingClient}
+            /> */}
+
+
+            <Screen
+                name='RatingService'
+                component={RatingService}
             />
 
         </Navigator>

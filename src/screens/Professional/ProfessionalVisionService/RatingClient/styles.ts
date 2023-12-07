@@ -21,17 +21,6 @@ export const styles = StyleSheet.create({
       height: 40,
       resizeMode: 'cover',
     },
-    buttonStyle: {
-      justifyContent: 'center',
-      alignItems: 'center',
-      marginTop: 30,
-      padding: 15,
-      backgroundColor: '#4B0082',
-    
-    },
-    text:{
-      color: 'white'
-    },
     textInput:{
       width: "80%",
       // borderWidth: 2,
@@ -41,5 +30,15 @@ export const styles = StyleSheet.create({
       // borderRadius: 10,
       // fontSize: 16,
       // marginVertical: 20,
+    },
+    text:{
+      color: 'white'
+    },
+    buttonStyle: {
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginTop: 30,
+      padding: 15,
+      backgroundColor: 'green',
     },
   });
