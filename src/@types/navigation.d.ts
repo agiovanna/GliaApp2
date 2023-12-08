@@ -63,4 +63,8 @@ export type RootParamList = {
             AddItem: object;
 
             AddHeader: object;
+
+            ProfessionalProfileClientVision: undefined;
+
+            Solicitacao: object;
         }
