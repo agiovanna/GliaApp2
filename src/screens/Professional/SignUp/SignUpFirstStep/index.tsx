@@ -1,100 +1,114 @@
 import { LinearGradient } from "expo-linear-gradient";
-
 import theme from "../../../../theme";
-
-import React from "react-native";
-import { useState } from "react";
-
-//Para a tela subir junto com o teclado
-import { KeyboardAvoidingView, Platform } from "react-native";
-import {
-    Form,
-    Content,
-    Title,
-    Container,
-    LoginButton,
-    LoginLabel,
-} from "./style";
-
+import React, { useState } from "react";
+import { KeyboardAvoidingView, Platform, Alert, ScrollView} from "react-native";
+import { Form, Title, Container, LoginButton, LoginLabel, Logo, Screen} from "./style";
 import { Input } from "../../../../components/Input";
 import { Button } from "../../../../components/Button";
+import { format, parse } from 'date-fns';
 
 export function SignUpProfessional1({ navigation }: { navigation: any }) {
 
     const [cpf, setCpf] = useState<string>('');
-
-    function Data() {
-        navigation.navigate("SignUpProfessional2", {
-            name,
-            birthDate,
-            telephone,
-            cpf,
-        });
-    }
-
     const [name, setName] = useState("");
-    const [birthDate, setBirthDate] = useState("");
+    const [birthdate, setBirthdate] = useState("");
     const [telephone, setTelephone] = useState("");
 
+    function handleSignIn (){
+        navigation.navigate('SignIn')
+    }
+
+    function formatDateForDatabase(dateString: string): string | null {
+        try {
+            const formattedDate = parse(dateString, 'dd/MM/yyyy', new Date());
+            const formattedDateForDatabase = format(formattedDate, 'yyyy-MM-dd\'T\'00:00:00.000\'Z\'');
+            return formattedDateForDatabase;
+        } catch (error) {
+            console.error('Erro ao formatar data:', error);
+            return null;
+        }
+    }
+
+    function Data() {
+        const formattedDate = formatDateForDatabase(birthdate);
+        if (!name || !birthdate || telephone || cpf) {
+            Alert.alert("Erro", "Por favor, preencha todos os campos.");
+            return;
+        }
+        if (formattedDate) {
+            navigation.navigate("SignUpProfessional2", {
+                name,
+                birthdate: formattedDate,
+                telephone,
+                cpf,
+            });
+        }
+        
+        else {
+            console.log('Formatos inválidos');
+            // Handle case where the entered date is invalid
+        }
+    }
+
     return (
+        <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={{ flex: 1 }}>
+        <Screen>
+        <ScrollView
+            contentContainerStyle={{ flexGrow: 1 }}
+            keyboardShouldPersistTaps="handled"
+        >
 
         <LinearGradient
-            colors={theme.COLORS.GRADIENT2}
+            colors={theme.COLORS.GRADIENT1}
             start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 0 }}
-            style={{ flex: 1 }}
+            end={{ x: 0, y: 0.4 }}
+            style={{ alignItems: 'center'}}
         >
-            <KeyboardAvoidingView
-                behavior={Platform.OS === "ios" ? "padding" : undefined}
-            >
 
-                <Content>
-                    <Form>
-                        <Container>
-                            <Title> Criar conta </Title>
+            <Logo source={require('../../../../../assets/white-icon.png')} />
+            <Form>
+                <Container>
+                    <Title> Criar conta </Title>
+                    <Input
+                        name="name"
+                        placeholder="Name*"
+                        type="primary"
+                        onChangeText={setName}
+                        value={name}
+                    />
+                    <Input
+                        name="cpf"
+                        placeholder="CPF*"
+                        type="primary"
+                        keyboardType="numeric"
+                        onChangeText={setCpf}
+                        value={cpf}
+                    />
+                    <Input
+                        name="birthdate"
+                        placeholder="Birthdate*"
+                        type="primary"
+                        onChangeText={setBirthdate}
+                        value={birthdate}
+                    />
+                    <Input
+                        name="telephone"
+                        placeholder="Phone number*"
+                        type="primary"
+                        keyboardType="numeric"
+                        onChangeText={setTelephone}
+                        value={telephone}
+                    />
+                    <Button title="Continuar" type="primary" onPress={Data} />
+                    <LoginButton onPress={handleSignIn}>
+                        <LoginLabel> Já possui conta? Faça login.  </LoginLabel>
+                    </LoginButton>
+                </Container>
+            </Form>
 
-                            <Input
-                                name="name"
-                                placeholder="Nome*"
-                                type="primary"
-                                onChangeText={setName}
-                                value={name}
-                            />
-
-                            <Input
-                                name="cpf"
-                                placeholder="CPF*"
-                                type="primary"
-                                keyboardType="numeric"
-                                onChangeText={setCpf}
-                                value={cpf}
-                            />
-
-                            <Input
-                                name="birthDate"
-                                placeholder="Data de Nascimento*"
-                                type="primary"
-                                onChangeText={setBirthDate}
-                                value={birthDate}
-                            />
-
-                            <Input
-                                name="telephone"
-                                placeholder="Número de telefone*"
-                                type="primary"
-                                keyboardType="numeric"
-                                onChangeText={setTelephone}
-                                value={telephone}
-                            />
-
-                            <Button title="Continuar" type="primary" onPress={Data} />
-                            <LoginButton>
-                                <LoginLabel> Já possui conta? Faça Login.</LoginLabel>
-                            </LoginButton>
-                        </Container>
-                    </Form>
-                </Content>
-            </KeyboardAvoidingView>
         </LinearGradient>
+        </ScrollView>
+            </Screen>
+        </KeyboardAvoidingView>
     );
 }

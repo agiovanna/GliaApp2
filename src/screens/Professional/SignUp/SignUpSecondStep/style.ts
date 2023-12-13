@@ -25,11 +25,6 @@ export const SubTitle = styled.Text`
     `};
 `
 
-export const Content = styled.ScrollView.attrs({
-    showsVerticalScrollIndicator: false,
-    contentContainerStyle: {
-        paddingBottom: getBottomSpace() + 48
-    },
-})`
-    width: 100%;
+export const Content = styled.View`
+    flex: 1
 `;

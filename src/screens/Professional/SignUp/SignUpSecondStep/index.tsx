@@ -6,9 +6,9 @@ import { Button } from "../../../../components/Button";
 import { useState } from "react";
 import { SearchCEP } from '../../../../services/viacep';
 
-import { Screen, Container, } from "./style";
+import { Screen, Container, Content } from "./style";
 
-import { KeyboardAvoidingView, Platform } from "react-native";
+import { KeyboardAvoidingView, Platform, ScrollView, Alert } from "react-native";
 
 export function SignUpProfessional2({
     navigation,
@@ -30,6 +30,11 @@ export function SignUpProfessional2({
 
 
     function DataAdress() {
+        if (!state || !city || !cep || !neighborhood || !street || !numberHome) {
+            Alert.alert("Erro", "Por favor, preencha todos os campos.");
+            return;
+        } 
+        else {
         navigation.navigate("SignUpProfessional3", {
             name,
             birthDate,
@@ -45,6 +50,8 @@ export function SignUpProfessional2({
         });
     }
 
+    }
+
     const fetchCEPData = async () => {
         if (cep.length === 8) {
             const data = await SearchCEP(cep);
@@ -58,11 +65,13 @@ export function SignUpProfessional2({
     };
 
     return (
-        <Screen>
-            <KeyboardAvoidingView
-                behavior={Platform.OS === "ios" ? "padding" : undefined}
-            />
-
+        <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={{ flex: 1 }}>
+        <Content>
+        <ScrollView
+            contentContainerStyle={{ flexGrow: 1 }}
+            keyboardShouldPersistTaps="handled"
+        >
+            <Screen>
             <Header title="Endereço" />
             <Container>
                 <Input
@@ -119,5 +128,8 @@ export function SignUpProfessional2({
                 <Button title="Continuar" type="terciary" onPress={DataAdress} />
             </Container>
         </Screen>
+        </ScrollView>
+        </Content>
+        </KeyboardAvoidingView>
     );
 }
