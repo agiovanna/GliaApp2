@@ -22,6 +22,7 @@ import AddHeader from '../screens/Professional/SignUp/SignUpSixthStep';
 import RatingService from '../screens/Client/ClientVisionService/RatingService';
 import RatingClient from '../screens/Professional/ProfessionalVisionService/RatingClient';
 import { ProfessionalProfileClientVision } from '../screens/Client/ProfessionalProfile/ProfileClientVision';
+import { MapServiceProfessional } from '../screens/Professional/ProfessionalVisionService/MapRouteProfessional';
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
@@ -35,68 +36,59 @@ export function Routes() {
             /> */}
 
             {/* <Screen
-                name='HomeClient'
-                component={HomeClient}
-            /> */}
-
-            {/* <Screen
-                name='HomeProfessional'
-                component={HomeProfessional}
-            /> */}
-
-            {/* <Screen
-                name='MenuProfessional'
-                component={MenuProfessional}
-            /> */}
-
-            {/* <Screen
-                name='MenuClient'
-                component={MenuClient}
-            /> */}
-
-            {/* <Screen
                 name='SignUpClient1'
                 component={SignUpClient1}
-            />
+            /> */}
 
-            <Screen
+            {/* <Screen
                 name='SignUpClient2'
                 component={SignUpClient2}
-            />
-
+            /> */}
+{/* 
             <Screen
                 name='SignUpClient3'
                 component={SignUpClient3}
-            />
+            /> */}
 
-            <Screen
+            {/* <Screen
                 name='SignUpProfessional1'
                 component={SignUpProfessional1}
-            />
+            /> */}
 
-            <Screen
+            {/* <Screen
                 name='SignUpProfessional2'
                 component={SignUpProfessional2}
-            />
+            /> */}
 
-            <Screen
+            {/* <Screen
                 name='SignUpProfessional3'
                 component={SignUpProfessional3}
-            />
+            /> */}
 
-            <Screen
+            {/* <Screen
                 name='SignUpProfessional4'
                 component={SignUpProfessional4}
-            />
+            /> */}
 
-            <Screen
+            {/* <Screen
                 name='SignUpProfessional5'
                 component={SignUpProfessional5}
+            /> */}
+
+
+            <Screen
+                name='HomeClient'
+                component={HomeClient}
             />
 
             <Screen
-                name='MapClient'
-                component={MapClient}
+                name='HomeProfessional'
+                component={HomeProfessional}
+            />
+
+            <Screen
+                name='MenuProfessional'
+                component={MenuProfessional}
             />
 
             <Screen
@@ -110,8 +102,40 @@ export function Routes() {
             />
 
             <Screen
+                name='MenuClient'
+                component={MenuClient}
+            />
+
+            <Screen
+                name='MapClient'
+                component={MapClient}
+            />
+
+
+            <Screen
                 name='AddHeader'
                 component={AddHeader}
+            />
+
+            <Screen
+                name='RatingClient'
+                component={RatingClient}
+            />
+
+            <Screen
+                name='ProfessionalProfileClientVision'
+                component={ProfessionalProfileClientVision}
+            />
+
+            <Screen
+                name='MapServiceProfessional'
+                component={MapServiceProfessional}
+            />
+
+
+            <Screen
+                name='RatingService'
+                component={RatingService}
             />
 
             <Screen
@@ -122,23 +146,8 @@ export function Routes() {
             <Screen
                 name='AddItem'
                 component={AddItem}
-            /> */}
-
-            {/* <Screen
-                name='RatingClient'
-                component={RatingClient}
-            /> */}
-
-
-            {/* <Screen
-                name='RatingService'
-                component={RatingService}
-            /> */}
-
-            <Screen
-                name='ProfessionalProfileClientVision'
-                component={ProfessionalProfileClientVision}
             />
+
 
         </Navigator>
     );

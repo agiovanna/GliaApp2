@@ -3,6 +3,7 @@ import { Text, View } from 'react-native';
 import {Catalog} from '../ProfileCatalog';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { InfoScreen } from '../ProfileInfo';
+import { RatingScreen } from '../ProfileRating';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -20,12 +21,7 @@ function Info() {
 
 function Avaliacoes() {
     return (
-        <View style={{
-            flex: 1,
-            backgroundColor: '#03cafc'
-        }}>
-            <Text>Avaliacoes Screen</Text>
-        </View>
+        <RatingScreen/>
     );
 }
 

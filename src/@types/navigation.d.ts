@@ -66,5 +66,7 @@ export type RootParamList = {
 
             ProfessionalProfileClientVision: undefined;
 
-            Solicitacao: object;
+            request: object;
+
+            MapServiceProfessional: undefined
         }

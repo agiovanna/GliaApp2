@@ -8,6 +8,11 @@ import { Ionicons } from '@expo/vector-icons';
 import { useRoute } from '@react-navigation/native';
 import * as geolib from 'geolib';
 
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootParamList } from '../../../../@types/navigation';
+import { useNavigation } from '@react-navigation/native';
+
+
 type itemScreenParams = {
     clientLocation: { clienteLat: number; clienteLot: number };
     clientName: string;
@@ -16,7 +21,12 @@ type itemScreenParams = {
     image: string;
 };
 
+type authScreenProp = StackNavigationProp<RootParamList, 'MapServiceProfessional'>;
+
+
 export function MapServiceProfessional() {
+
+    const navigation = useNavigation<authScreenProp>();
 
     const [location, setLocation] = useState<LocationObject | null>(null); //localizaççao do dispositivo
     const mapRef = useRef<MapView>(null);
@@ -143,12 +153,12 @@ export function MapServiceProfessional() {
                 <Text>{itemName}</Text>
                 <Text>R${itemCost},00</Text>
 
-                <TouchableOpacity onPress={Chat}>
+                <TouchableOpacity onPress={() => navigation.navigate('ChatProfessional')}>
                     <Ionicons name="ios-chatbubble-ellipses-outline" size={28} color="black" />
                 </TouchableOpacity>
 
-                <Button title='Cheguei' onPress={didIt} />
-                <Button title='Cancelar' onPress={Cancel} />
+                <Button title='Cheguei' onPress={() => navigation.navigate('ChatProfessional')} />
+                <Button title='Cancelar' onPress={() => navigation.navigate('HomeProfessional')}/>
             </View>
 
         </View>

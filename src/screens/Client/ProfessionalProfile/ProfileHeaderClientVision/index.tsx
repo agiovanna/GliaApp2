@@ -2,80 +2,88 @@ import { StyleSheet, View, Image, Text } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import React, { useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { styles } from './styles'
+import { readProfessional } from '../../../../api/readUsers/readProfessional';
 import { readRatingStars } from "../../../../api/readRating/readAverage";
-import RatingStars from "../../../../components/RatingStars";
 
+
+interface professionals {
+  tb_profissional_nome: string,
+  tb_profissional_id: number
+}
 
 interface stars {
   stars: number;
 }
 
+
 export default function HeaderProfessional() {
+
   const [profileImage, setProfileImage] = useState<string | null>(null);
-  const id = 1 //solicitação id
+  const [professional, setProfessional] = useState<professionals[]>([]);
   const [stars, setStars] = useState<stars>({ stars: 0 });
-  const [userRating, setUserRating] = useState<number>(0);
-  const handleRatingPress = (rating: number) => {
-    setUserRating(rating);
-};
+
+  useEffect(() => {
+    const carregarAvaliacoes = async () => {
+      try {
+        const data = await readProfessional();
+        setProfessional(data);
+      } catch (error) {
+        console.error('Erro ao carregar avaliações: ', error);
+      }
+    };
+
+    carregarAvaliacoes();
+  }, []);
+
+  // Use o useEffect para carregar a imagem do AsyncStorage quando a tela for montada
+  useEffect(() => {
+    const loadProfileImage = async () => {
+      try {
+        const storedImage = await AsyncStorage.getItem('imageProfessional');
+        setProfileImage(storedImage);
+      } catch (error) {
+        console.log('Erro ao carregar imagem do perfil:', error);
+      }
+    };
+
+    loadProfileImage();
+  }, []);
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.boxPhoto}>
+
+        {profileImage ? (
+          <Image source={{ uri: profileImage }} style={styles.imgProfile} />
+        ) : (
+          <Image source={require('../../../../../assets/profile.png')} style={styles.imgProfile} />
+        )}
 
 
+        <View>
+          {professional.map((professional, index) => (
+            <View key={index}>
+              <View style={{ marginVertical: 10 }} />
 
-      //media de avaliações
-      useEffect(() => {
-        const carregarMedia = async () => {
-            try {
-                const data = await readRatingStars(id)
-                setStars(data);
-            } catch (error) {
-                console.error('Erro ao carregar média de avaliações: ', error)
-            }
-        };
-        carregarMedia();
-    }, []);
-
-    // Use o useEffect para carregar a imagem do AsyncStorage quando a tela for montada
-    useEffect(() => {
-      const loadProfileImage = async () => {
-        try {
-          const storedImage = await AsyncStorage.getItem('imageProfessional');
-          setProfileImage(storedImage);
-        } catch (error) {
-          console.log('Erro ao carregar imagem do perfil:', error);
-        }
-      };
-
-      loadProfileImage();
-    }, []);
-
-    return (
-      <View>
-        <View >
-  
-          {profileImage ? ( 
-          <Image source={{ uri: profileImage }} />
-          ) : (
-            <Image source={require('../../../../../assets/profile.png')}  />
-            )}
-  
-          {/* <Text>Nome </Text> */}
-          <View >
-            <AntDesign name="star" size={22} color="white" />
-    {/* media de avaliações */}
-            {/* <View>
-                {stars ? (
-                    <View>
-                        <RatingStars rating={userRating} onRatingPress={handleRatingPress} />
-                    </View>
-                ) : (
-                  <RatingStars rating={userRating} onRatingPress={handleRatingPress} />
-
-                    // <Text>0,0</Text>
-                )}
-            </View>          */}
-             </View>
+              {/* sobre a cliente  */}
+              <Text style={styles.text}>{professional.tb_profissional_nome}</Text>
+            </View>
+          ))}
         </View>
+
+        <View style={styles.assessment}>
+          {stars ? (
+            <View>
+              <AntDesign name="star" size={22} color="black" />
+              <Text style={{ fontSize: 20, marginLeft: 25, color: 'black', marginTop: -20}}>{stars.stars},0</Text>
+            </View>
+          ) : (
+            <Text>0,0</Text>
+          )}
+        </View>
+
       </View>
-    );
-  }
-  
+    </View>
+  );
+}

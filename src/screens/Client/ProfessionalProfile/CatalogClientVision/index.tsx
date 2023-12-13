@@ -18,12 +18,19 @@ interface catalog {
     tb_catalogo_nome: string;
     tb_catalogo_desc: string;
     tb_catalogo_id: number;
+    profissional: {
+        tb_profissional_nome: string;
+        tb_profissional_id: number;
+    };
     itens: {
         tb_item_img: string;
         tb_item_nome: string;
         tb_item_desc: string;
         tb_item_tempo: number;
         tb_item_valor: number;
+        tb_item_id: number;
+        tb_catalogo_id: number;
+        tb_categoria_id: number;
     }[];
 }
 
@@ -34,16 +41,15 @@ export function Catalog() {
     const navigation = useNavigation<authScreenProp>();
     const [itemsRefreshing, setItemsRefreshing] = useState(false);
 
-    const professional_id = 1;
-
     const [catalogs, setCatalogs] = useState<catalog[]>([]);
-
+    const id = 1;
     //select catálogo
     const refreshItems = async () => {
         try {
             setItemsRefreshing(true);
-            const data = await readCatalog();
+            const data = await readCatalog(id);
             setCatalogs(data);
+
         } catch (error) {
             console.error('Erro ao carregar itens:', error);
         } finally {
@@ -63,6 +69,7 @@ export function Catalog() {
 
         return () => clearInterval(intervalId);
     }, []);
+
 
     //convertendo minutos para hora
     function formatTime(minutes: number): string {
@@ -96,11 +103,24 @@ export function Catalog() {
                                         <Text>{item.tb_item_valor},00 </Text>
                                         <Text>{formatTime(item.tb_item_tempo)}</Text>
 
+
+
                                         <TouchableOpacity
                                             activeOpacity={0.7}
                                             style={styles.buttonStyle}
                                             onPress={() => {
-                                                navigation.navigate('Solicitacao', { item_nome: item.tb_item_nome });
+                                                navigation.navigate('request', {
+                                                    itemId: item.tb_item_id,
+                                                    itemName: item.tb_item_nome,
+                                                    itemDesc: item.tb_item_desc,
+                                                    itemCost: item.tb_item_valor,
+                                                    itemTime: item.tb_item_tempo,
+                                                    itemImg: item.tb_item_img,
+                                                    catalogId: item.tb_catalogo_id,
+                                                    categoryId: item.tb_categoria_id,
+                                                    professionalId: catalog.profissional.tb_profissional_id,
+                                                    professionalName: catalog.profissional.tb_profissional_nome
+                                                });
                                             }}
                                         >
 

@@ -17,12 +17,19 @@ interface catalog {
     tb_catalogo_nome: string;
     tb_catalogo_desc: string;
     tb_catalogo_id: number;
+    profissional: {
+        tb_profissional_nome: string;
+        tb_profissional_id: number;
+    };
     itens: {
         tb_item_img: string;
         tb_item_nome: string;
         tb_item_desc: string;
         tb_item_tempo: number;
         tb_item_valor: number;
+        tb_item_id: number;
+        tb_catalogo_id: number;
+        tb_categoria_id: number;
     }[];
 }
 
@@ -38,7 +45,9 @@ export function Catalog() {
     const [modalVisible, setModalVisible] = useState(false);
     const [name, setName] = useState('');
     const [describe, setDescribe] = useState('');
-    const professional_id = 1;
+
+    const id = 1;
+     const professional_id = id;
 
     const [catalogs, setCatalogs] = useState<catalog[]>([]);
 
@@ -46,8 +55,9 @@ export function Catalog() {
     const refreshItems = async () => {
         try {
             setItemsRefreshing(true);
-            const data = await readCatalog();
+            const data = await readCatalog(id);
             setCatalogs(data);
+            console.log('id cadastrado', id);
         } catch (error) {
             console.error('Erro ao carregar itens:', error);
         } finally {
@@ -67,6 +77,7 @@ export function Catalog() {
 
         return () => clearInterval(intervalId);
     }, []);
+
 
     //convertendo minutos para hora
     function formatTime(minutes: number): string {

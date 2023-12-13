@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { styles } from './styles';
 import { createRating } from '../../../../api/createRating';
-import { TextInput } from 'react-native-gesture-handler';
+import { TextInput } from 'react-native';
 
 
 const RatingService: React.FC = () => {
@@ -18,7 +18,7 @@ const RatingService: React.FC = () => {
 
   const score = defaultRating;
   const [comment, setComment] = useState("");
-  const service_id = 1
+  const service_id = 4
 
 
   const starImgFilled =
@@ -26,13 +26,18 @@ const RatingService: React.FC = () => {
   const starImgCorner =
     'https://raw.githubusercontent.com/tranhonghan/images/main/star_corner.png';
 
-    const cadRating = () => {
-      createRating(
-        score,
-        comment,
-        service_id
-      )
-    }
+  const cadRating = () => {
+    createRating(
+      score,
+      comment,
+      service_id
+    )
+
+    console.log(
+    'Nota: ' +score,
+    'Comentário: ' +comment
+    );
+  }
 
   const CustomRatingBar: React.FC = () => {
 
@@ -63,20 +68,27 @@ const RatingService: React.FC = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+
       <Text style={styles.textStyle}> Avalie sua experiência com a profissional:  </Text>
+
       <CustomRatingBar />
+
       <Text style={styles.textStyle}>
         {defaultRating + ' / ' + maxRating.length}
       </Text>
+      <View style={{ marginVertical: 10 }} />
+
+      <Text style={styles.textStyle}>Adicione um feedback:</Text>
+      <View style={{ marginVertical: 10 }} />
+      <TextInput placeholder="Opcional" onChangeText={setComment} value={comment} style={styles.textInput} />
+
+
+      <View style={{ marginVertical: 10 }} />
       <TouchableOpacity
         activeOpacity={0.7}
         style={styles.buttonStyle}
         onPress={cadRating}
       >
-
-        <Text>Adicione um feedback:</Text>
-        <TextInput placeholder="Opcional"  onChangeText={setComment} value={comment} style={styles.textInput}/>
-
         <Text style={styles.text}>Enviar</Text>
       </TouchableOpacity>
     </SafeAreaView>
