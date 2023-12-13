@@ -17,7 +17,7 @@ export const InputText = styled(TextInput).attrs<Props>(({ theme, type }) => ({
   border-radius: 12px;
   font-size: 14px;
   padding-left: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   border-width: 2px;
   border-style: solid;
 

@@ -1,8 +1,8 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { HomeClient } from "../screens/Client/HomeClient"
+import { HomeClient } from "../screens/Client/HomeClient/index"
 import { HomeProfessional } from '../screens/Professional/HomeProfessional';
-import { MenuProfessional } from '../screens/Professional/Menu';
+import { MenuProfessional } from '../screens/Professional/Menu/index';
 import { MenuClient } from '../screens/Client/Menu';
 import { SignUpClient1 } from '../screens/Client/SignUp/SignUpFirstStep';
 import { SignUpClient2 } from '../screens/Client/SignUp/SignUpSecondStep';
@@ -19,8 +19,7 @@ import { ChatProfessional } from '../screens/Professional/Chat';
 import { ProfileProfessional } from '../screens/Professional/Profile';
 import AddItem from '../screens/Professional/Profile/AddItem';
 import AddHeader from '../screens/Professional/SignUp/SignUpSixthStep';
-import SplashScreen from '../screens/Splash';
-import { Welcome } from '../screens/Welcome';
+
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
@@ -42,20 +41,20 @@ export function Routes() {
                 component={HomeClient}
             />
 
-            <Screen
-                name='HomeProfessional'
-                component={HomeProfessional}
-            />
 
-            <Screen
+
+            {/*<Screen
                 name='MenuProfessional'
                 component={MenuProfessional}
-            />
+        />*/}
 
              <Screen
                 name='MenuClient'
                 component={MenuClient}
             /> 
+
+            {/*<Screen name='HomeClient'
+            component={HomeClient}/>
 
             <Screen
                 name='SignUpClient1'
@@ -125,7 +124,12 @@ export function Routes() {
             <Screen
                 name='AddItem'
                 component={AddItem}
-            />
+        />*/}
+
+<Screen name='ProfileClient' component={ProfileClient}/>
+            <Screen name='HeaderClient' component={HeaderClient}/>
+
+            
 
         </Navigator>
     );

@@ -28,7 +28,7 @@ export type RootParamList = {
 
             HomeClient: undefined;
 
-            HomeProfessional: undefined;
+            HomeProfessional: object;
 
             Map: undefined;
 
