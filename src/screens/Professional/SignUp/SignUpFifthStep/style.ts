@@ -4,7 +4,6 @@ import { getBottomSpace } from "react-native-iphone-x-helper";
 export const Screen = styled.View`
     flex: 1;
     align-items: center;
-    justify-content: center;
 `
 
 export const Container = styled.View`
@@ -13,13 +12,8 @@ export const Container = styled.View`
     align-self: center;
 `
 
-export const Content = styled.ScrollView.attrs({
-    showsVerticalScrollIndicator: false,
-    contentContainerStyle: {
-        paddingBottom: getBottomSpace() + 48
-    },
-})`
-    width: 100%;
+export const Content = styled.View`
+flex: 1;
 `;
 
 

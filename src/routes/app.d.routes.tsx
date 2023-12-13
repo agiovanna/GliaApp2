@@ -19,6 +19,8 @@ import { ChatProfessional } from '../screens/Professional/Chat';
 import { ProfileProfessional } from '../screens/Professional/Profile';
 import AddItem from '../screens/Professional/Profile/AddItem';
 import AddHeader from '../screens/Professional/SignUp/SignUpSixthStep';
+import SplashScreen from '../screens/Splash';
+import { Welcome } from '../screens/Welcome';
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
@@ -26,30 +28,34 @@ export function Routes() {
     return (
         <Navigator screenOptions={{ headerShown: false }}>
 
-            {/* <Screen
+            <Screen name='SplashScreen' component={SplashScreen}/>
+
+            <Screen name='Welcome' component={Welcome}/>
+
+            <Screen
                 name='SignIn'
                 component={SignIn}
-            /> */}
+            />
 
-            {/* <Screen
+            <Screen
                 name='HomeClient'
                 component={HomeClient}
-            /> */}
+            />
 
-            {/* <Screen
+            <Screen
                 name='HomeProfessional'
                 component={HomeProfessional}
-            /> */}
+            />
 
             <Screen
                 name='MenuProfessional'
                 component={MenuProfessional}
             />
 
-            {/* <Screen
+             <Screen
                 name='MenuClient'
                 component={MenuClient}
-            /> */}
+            /> 
 
             <Screen
                 name='SignUpClient1'
@@ -104,7 +110,7 @@ export function Routes() {
             <Screen
                 name='ChatProfessional'
                 component={ChatProfessional}
-            />
+        />
 
             <Screen
                 name='AddHeader'
