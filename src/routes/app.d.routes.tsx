@@ -19,6 +19,10 @@ import { ChatProfessional } from '../screens/Professional/Chat';
 import { ProfileProfessional } from '../screens/Professional/Profile';
 import AddItem from '../screens/Professional/Profile/AddItem';
 import AddHeader from '../screens/Professional/SignUp/SignUpSixthStep';
+import { TheItem } from '../screens/Client/Request';
+import { CronometroRequestLoading } from '../screens/Client/RequestInProgress';
+import { RouteProfessional } from '../screens/Professional/Route';
+import { InicioServicoProfissional } from '../screens/Professional/ServiceInitial';
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
@@ -119,6 +123,22 @@ export function Routes() {
             <Screen
                 name='AddItem'
                 component={AddItem}
+            />
+
+            <Screen
+                name='responseClient'
+                component={RouteProfessional}
+            />
+
+            <Screen
+                name='Stopwatch'
+                component={CronometroRequestLoading}
+            />
+
+
+            <Screen
+                name='inicioServicoProfissional'
+                component={InicioServicoProfissional}
             />
 
         </Navigator>
