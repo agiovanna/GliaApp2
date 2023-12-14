@@ -19,7 +19,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { RootParamList } from '../../../../@types/navigation';
 
 type itemScreenParams = {
-    catalog_id: number;
+    catalog_id: number; 
 };
 
 type authScreenProp = StackNavigationProp<RootParamList, 'AddItem'>;
@@ -159,10 +159,10 @@ function AddItem() {
                     value={selectCategory}
                     onValueChange={(itemValue, itemIndex) => setSelectCategory(itemValue)}
                     items={[
-                        { label: "Sobrancelha", value: "1" },
-                        { label: "Maquiagem", value: "2" },
-                        { label: "Unhas", value: "3" },
-                        { label: "Cabelo", value: "4" },
+                        { label: "Cabelo", value: "1" },
+                        { label: "Unha", value: "2" },
+                        { label: "Maquiagem", value: "3" },
+                        { label: "Sobrancelha", value: "4" },
                         { label: "Cílios", value: "5" },
                     ]}
                 />

@@ -83,13 +83,11 @@ export function Catalog() {
             await createCatalog(
                 name,
                 describe,
-                professional_id
             );
 
             console.log(
                 'Nome: ' + name,
                 'Descrição: ' + describe,
-                'Profissional: ' + professional_id,
             );
 
 
@@ -105,7 +103,6 @@ export function Catalog() {
 
     }
 
-
     return (
         <GestureHandlerRootView style={{ flex: 1 }}>
 
@@ -120,7 +117,7 @@ export function Catalog() {
             <BoxCatalog>
                 <Content>
                     {catalogs.map((catalog, index) => (
-                        <CatalogContainer>
+                        <CatalogContainer key={catalog.tb_catalogo_id}>
                             <CatalogTitle>{catalog.tb_catalogo_nome}</CatalogTitle>
                             <CatalogDesc>{catalog.tb_catalogo_desc}</CatalogDesc>
 
