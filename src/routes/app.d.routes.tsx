@@ -1,8 +1,8 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { HomeClient } from "../screens/Client/HomeClient"
+import { HomeClient } from "../screens/Client/HomeClient/index"
 import { HomeProfessional } from '../screens/Professional/HomeProfessional';
-import { MenuProfessional } from '../screens/Professional/Menu';
+import { MenuProfessional } from '../screens/Professional/Menu/index';
 import { MenuClient } from '../screens/Client/Menu';
 import { SignUpClient1 } from '../screens/Client/SignUp/SignUpFirstStep';
 import { SignUpClient2 } from '../screens/Client/SignUp/SignUpSecondStep';
@@ -24,36 +24,41 @@ import { CronometroRequestLoading } from '../screens/Client/RequestInProgress';
 import { RouteProfessional } from '../screens/Professional/Route';
 import { InicioServicoProfissional } from '../screens/Professional/ServiceInitial';
 
+
 const { Navigator, Screen } = createNativeStackNavigator();
 
 export function Routes() {
     return (
         <Navigator screenOptions={{ headerShown: false }}>
 
-            {/* <Screen
-                name='SignIn'
-                component={SignIn}
-            /> */}
+            <Screen name='SplashScreen' component={SplashScreen}/>
 
-            {/* <Screen
-                name='HomeClient'
-                component={HomeClient}
-            /> */}
-
-            {/* <Screen
-                name='HomeProfessional'
-                component={HomeProfessional}
-            /> */}
+            <Screen name='Welcome' component={Welcome}/>
 
             <Screen
-                name='MenuProfessional'
-                component={MenuProfessional}
+                name='SignIn'
+                component={SignIn}
             />
 
-            {/* <Screen
+            <Screen
+                name='HomeClient'
+                component={HomeClient}
+            />
+
+
+
+            {/*<Screen
+                name='MenuProfessional'
+                component={MenuProfessional}
+        />*/}
+
+             <Screen
                 name='MenuClient'
                 component={MenuClient}
-            /> */}
+            /> 
+
+            {/*<Screen name='HomeClient'
+            component={HomeClient}/>
 
             <Screen
                 name='SignUpClient1'
@@ -108,7 +113,7 @@ export function Routes() {
             <Screen
                 name='ChatProfessional'
                 component={ChatProfessional}
-            />
+        />
 
             <Screen
                 name='AddHeader'
@@ -123,7 +128,12 @@ export function Routes() {
             <Screen
                 name='AddItem'
                 component={AddItem}
-            />
+        />*/}
+
+<Screen name='ProfileClient' component={ProfileClient}/>
+            <Screen name='HeaderClient' component={HeaderClient}/>
+
+            
 
             <Screen
                 name='responseClient'

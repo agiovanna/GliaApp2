@@ -1,60 +1,70 @@
 import styled, { css } from "styled-components/native";
-import { getBottomSpace } from 'react-native-iphone-x-helper';
+import theme from "../../../../theme";
 
 export const Form = styled.View`
-    background-color: white;
-    height: 100%;
-    align-items: center;
-    width: 100%;
-    border-top-left-radius: 32px;
-    border-top-right-radius: 32px;
+  background-color: white;
+  height: 100%;
+  align-items: center;
+  width: 100%;
+  border-top-left-radius: 32px;
+  border-top-right-radius: 32px;
 `;
 
-export const Content = styled.ScrollView.attrs({
-    showsVerticalScrollIndicator: false,
-    contentContainerStyle: {
-        paddingBottom: getBottomSpace() + 48
-    },
 
-})`
-    width: 100%;
-`;
-
-export const Title = styled.Text` 
-    font-size: 32px;
-    align-self: flex-start;
-    margin-bottom: 25px ;
-    font-weight: bold;
-    margin-top: 25px;
-    margin-left: 25px;
-    ${({ theme }) => css`
-        color: ${theme.COLORS.DARKBLUE};
-    `};
+export const Title = styled.Text`
+  font-size: 32px;
+  align-self: flex-start;
+  margin-bottom: 45px;
+  font-weight: bold;
+  margin-top: 25px;
+  ${({ theme }) => css`
+    color: ${theme.COLORS.DARKBLUE};
+  `};
 `;
 
 export const Logo = styled.Image.attrs({
-    resizeMode: 'contain'
+    resizeMode: "contain",
 })`
-    height: 100px;
-    margin-top: 35px;
-    margin-bottom: 35px
+  height: 130px;
+  margin-top: 60px;
+  margin-bottom: 45px;
 `;
 
-export const LoginLabel = styled.Text`
-    font-size: 14px;
-    font-weight: 600;
-    margin-top: 25px;
-    ${({ theme }) => css`
+export const Container = styled.View`
+  width: 85%;
+  height: 100%;
+  align-items: center;
+`;
+
+export const SubTitle = styled.Text`
+  font-size: 18px;
+  margin-bottom: 25px;
+  align-self: self-start;
+  font-weight: 600;
+  ${({ theme }) => css`
     color: ${theme.COLORS.DARKBLUE};
-    `};
+  `};
+  margin-left: 5px;
+`;
+export const ContainerButton = styled.View`
+  width: 50%;
+  align-self: self-end;
+  margin-left: 5px;
 `;
 
 export const LoginButton = styled.TouchableOpacity`
-    margin-top: 20px;
-    align-self: center;
-` ;
-
-export const Container = styled.View`
-    width: 85%;
+  margin-bottom: 10px;
+  margin-top: 20px;
 `;
 
+export const LoginLabel = styled.Text`
+  font-size: 14px;
+  font-weight: 600;
+  ${({ theme }) => css`
+    color: ${theme.COLORS.DARKBLUE};
+  `};
+`;
+
+export const Screen = styled.View`
+  flex: 1;
+`

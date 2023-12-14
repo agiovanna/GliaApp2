@@ -11,8 +11,8 @@ export const Container = styled.View`
 
 export const Image = styled.Image`
 height: 200px;
-width: 200;
-borderRadius: 100;`
+width: 200px;
+border-radius: 100px;`
 
 // const styles = StyleSheet.create({
 //     container: {

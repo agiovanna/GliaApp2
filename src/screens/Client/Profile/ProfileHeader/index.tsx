@@ -25,11 +25,11 @@ export default function HeaderClient() {
       <View>
         <View >
   
-          {profileImage ? ( 
+          {/* {profileImage ? ( 
           <Image source={{ uri: profileImage }} />
-          ) : (
+          ) : ( */}
             <Image source={require('../../../../../assets/profile.png')}  />
-            )}
+            {/* )} */}
   
           <Text>Nome </Text>
           <View >

@@ -19,7 +19,7 @@ background-color: whitesmoke;
 
 export const MapContainer = styled(MapView)`
   width: 100%;
-  height: 70%;
+  height: 100%;
   margin-top: 10px;
 `;
 
